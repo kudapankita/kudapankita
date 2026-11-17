@@ -157,18 +157,6 @@ if(C.ALAMAT||C.MAPS_EMBED||C.MAPS_LINK){$("#lokasi").hidden=false;$("#alamat").t
 /* kanal resmi */
 const kanal=[["Shopee",C.SHOPEE],["Instagram",C.IG]];if(C.WA)kanal.push(["WhatsApp","https://wa.me/"+C.WA]);if(C.MAPS_LINK)kanal.push(["Google Maps",C.MAPS_LINK]);
 $("#kanal").innerHTML=kanal.map(([n,u])=>`<li><strong>${n}:</strong> <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("");
-/* FAQ */
-const faq=[["Varian rasa apa saja yang tersedia?","Original, Balado, dan Asin."],["Ukuran dan harganya berapa?","Tersedia ukuran 50 gr (Rp10.000) dan 150 gr (Rp25.000)."],["Apa fungsi mesin spinner?","Setelah digoreng, kentang diproses dengan mesin spinner untuk membantu mengurangi minyak."],["Bagaimana cara memesan?","Klik tombol Belanja di Shopee"+(C.WA?" atau pesan melalui WhatsApp lewat formulir di bagian Cara Pemesanan.":".")]];
-if(C.MSG_TERKONFIRMASI)faq.splice(3,0,["Apakah ada tambahan MSG?","Produk dibuat tanpa tambahan MSG."]);
-if(C.MASA_SIMPAN)faq.push(["Berapa masa simpan produk?",C.MASA_SIMPAN]);
-$("#faqList").innerHTML=faq.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
-/* data terstruktur */
-const ld={"@context":"https://schema.org","@type":C.ALAMAT?"LocalBusiness":"Organization","name":C.NAMA,"sameAs":[C.IG,C.SHOPEE]};
-if(C.WA)ld.telephone="+"+C.WA;if(C.ALAMAT)ld.address={"@type":"PostalAddress","streetAddress":C.ALAMAT,"addressCountry":"ID"};if(C.MAPS_LINK)ld.hasMap=C.MAPS_LINK;
-$("#ld").textContent=JSON.stringify(ld);
-</script>
-</body>
-</html>
 
   <!-- SECTION ULASAN SHOPEE -->
 <section id="ulasan" style="padding: 60px 20px; max-width: 1100px; margin: 0 auto;">
@@ -239,3 +227,11 @@ yang balado juga sedepppp kalo dipake makan sama nasi anget."
     </a>
   </div>
 </section>
+
+  /* data terstruktur */
+const ld={"@context":"https://schema.org","@type":C.ALAMAT?"LocalBusiness":"Organization","name":C.NAMA,"sameAs":[C.IG,C.SHOPEE]};
+if(C.WA)ld.telephone="+"+C.WA;if(C.ALAMAT)ld.address={"@type":"PostalAddress","streetAddress":C.ALAMAT,"addressCountry":"ID"};if(C.MAPS_LINK)ld.hasMap=C.MAPS_LINK;
+$("#ld").textContent=JSON.stringify(ld);
+</script>
+</body>
+</html>
